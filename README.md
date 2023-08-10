@@ -2,18 +2,22 @@
 
 
 <br/>
+
 ## Como usar
 
 
 <br/> 
+
 ## Tecnologias utilizadas
 
 
 <br/>
+
 ## Contribuindo
 
 
 <br/>
+
 ## Autores
 
 Antônio Marcos </br>
