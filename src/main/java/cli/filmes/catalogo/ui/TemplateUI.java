@@ -2,39 +2,38 @@ package main.java.cli.filmes.catalogo.ui;
 
 import main.java.cli.filmes.catalogo.utils.ConsoleUIHelper;
 
-public class TemplateUI {
+public abstract class TemplateUI {
 
-    protected int linhas;
-    protected int colunas;
-    protected String titulo;
+    protected static final int DEFAULT_ROWS = 24;
+    protected static final int DEFAULT_COLS = 120;
 
-    public TemplateUI(String titulo) {
-        this(24,120,titulo);
+    protected int rows;
+    protected int cols;
+    protected String title;
+
+    public TemplateUI(String title) {
+        this(DEFAULT_ROWS,DEFAULT_COLS, title);
     }
 
-    public TemplateUI(int linhas, int colunas, String titulo) {
-        this.linhas = linhas;
-        this.colunas = colunas;
-        this.titulo = titulo;
+    public TemplateUI(int rows, int cols, String title) {
+        this.rows = rows;
+        this.cols = cols;
+        this.title = title;
     }
 
     public void show() {
         do {
-            ConsoleUIHelper.drawHeader(titulo, colunas);
-            int linhasUsadas = 3; // Subtraindo linhas do header
-            ConsoleUIHelper.fillVSpace(linhas - linhasUsadas, colunas);
-            ConsoleUIHelper.drawLine(colunas);
-            if (true) {
+            ConsoleUIHelper.drawHeader(title, cols);
+            int linhasUsadas = 3 + drawContent() + menuLines(); // Subtraindo rows do header
+            ConsoleUIHelper.fillVSpace(rows - linhasUsadas, cols);
+            ConsoleUIHelper.drawLine(cols);
+            if (!drawMenu()) {
                 break;
             }
         } while (true);
     }
 
-    public void drawContent() {
-
-    }
-
-    public void drawMenu() {
-
-    }
+    public abstract int drawContent();
+    public abstract int menuLines();
+    public abstract boolean drawMenu();
 }
