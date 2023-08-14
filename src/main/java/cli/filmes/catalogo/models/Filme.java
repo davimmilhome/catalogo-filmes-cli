@@ -1,7 +1,7 @@
 package main.java.cli.filmes.catalogo.models;
 
 import main.java.cli.filmes.catalogo.enums.TipoFilme;
-
+import java.math.BigDecimal;
 import java.util.List;
 
 public class Filme {
@@ -12,9 +12,9 @@ public class Filme {
  protected Diretor diretor;
  protected List<Ator> ator;
 
- protected int orcamento;
+ protected BigDecimal orcamento;
 
-    public Filme(TipoFilme tipoFilme, String nomeFilme, String dataLancamento, String sinopse, Diretor diretor, List<Ator> ator, int orcamento) {
+    public Filme(TipoFilme tipoFilme, String nomeFilme, String dataLancamento, String sinopse, Diretor diretor, List<Ator> ator, BigDecimal orcamento) {
         this.tipoFilme = tipoFilme;
         this.nomeFilme = nomeFilme;
         this.dataLancamento = dataLancamento;
@@ -72,11 +72,11 @@ public class Filme {
         this.ator = ator;
     }
 
-    public int getOrcamento() {
+    public BigDecimal getOrcamento() {
         return orcamento;
     }
 
-    public void setOrcamento(int orcamento) {
+    public void setOrcamento(BigDecimal orcamento) {
         this.orcamento = orcamento;
     }
 
