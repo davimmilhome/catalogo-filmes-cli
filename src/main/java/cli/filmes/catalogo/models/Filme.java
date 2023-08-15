@@ -81,7 +81,7 @@ public class Filme {
     }
 
     @Override
-    public String 'git toString() {
+    public String toString() {
         return "Filme{" +
                 "tipoFilme=" + tipoFilme +
                 ", nomeFilme='" + nomeFilme + '\'' +
