@@ -1,23 +1,24 @@
 package main.java.cli.filmes.catalogo.ui;
 
 import main.java.cli.filmes.catalogo.utils.ConsoleUIHelper;
+import src.main.java.cli.filmes.catalogo.ui.PagedList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PagedListUI extends TemplateUI {
+public class PagedListUI<T> extends TemplateUI {
 
     protected final int PAGE_SIZE;
     protected int actualPage;
 
-    protected PagedList pageSource;
+    protected PagedList<T> pageSource;
 
-    public PagedListUI(String title, PagedList pageSource) {
+    public PagedListUI(String title, PagedList<T> pageSource) {
         this(DEFAULT_ROWS, DEFAULT_COLS, title, pageSource);
         // **
     }
 
-    public PagedListUI(int linhas, int colunas, String title, PagedList pageSource) {
+    public PagedListUI(int linhas, int colunas, String title, PagedList<T> pageSource) {
         super(linhas, colunas, title);
         PAGE_SIZE = linhas - 4; // Cabeçalho 3 rows + linha separadora
         actualPage = 1;
@@ -26,7 +27,7 @@ public class PagedListUI extends TemplateUI {
 
     @Override
     public int drawContent() {
-        List dataList = pageSource**;
+        List dataList = pageSource.listar(actualPage, PAGE_SIZE);
         for (int i = 0; i < PAGE_SIZE; i++) {
             dataList.get(i);
         }
