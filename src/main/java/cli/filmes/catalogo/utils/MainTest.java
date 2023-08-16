@@ -15,7 +15,7 @@ public class MainTest {
         dataLoader();
     }
 
-    static void dataLoader() {
+    public static void dataLoader() {
         Diretor peterJackson = new Diretor(
                 "Peter",
                 "Jackson",
