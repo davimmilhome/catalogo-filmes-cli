@@ -12,7 +12,6 @@ public abstract class PagedListUI<T> extends TemplateUI {
     protected int actualPage;
 
     private List<T> dataList;
-    private ArrayList nomesFilme;
 
     public PagedListUI(String title, PagedList<T> pageSource) {
         this(DEFAULT_ROWS, DEFAULT_COLS, title, pageSource);
@@ -20,7 +19,7 @@ public abstract class PagedListUI<T> extends TemplateUI {
 
     public PagedListUI(int linhas, int colunas, String title, PagedList<T> pageSource) {
         super(linhas, colunas, title);
-        PAGE_SIZE = linhas - 4; // Cabeçalho 3 rows + linha separadora
+        PAGE_SIZE = linhas - (3 + menuLines()); // Cabeçalho 3 rows
         actualPage = 1;
         this.pageSource = pageSource;
     }
@@ -28,13 +27,12 @@ public abstract class PagedListUI<T> extends TemplateUI {
     @Override
     public int drawContent() {
         dataList = pageSource.listar(actualPage, PAGE_SIZE);
-        nomesFilme = (ArrayList) pageSource.listarNome(actualPage, PAGE_SIZE);
-        if (nomesFilme.isEmpty() && actualPage > 1) {
+        if (dataList.isEmpty() && actualPage > 1) {
             previousPage();
-            nomesFilme = (ArrayList) pageSource.listarNome(actualPage, PAGE_SIZE);
+            dataList = pageSource.listar(actualPage, PAGE_SIZE);
         }
-        for (int i = 0; i < nomesFilme.size(); i++) {
-            String text = nomesFilme.get(i).toString();
+        for (int i = 1; i < dataList.size(); i++) {
+            String text = dataList.get(i).toString();
             ConsoleUIHelper.drawWithRightPadding(i + " -> " + text, cols, ' ');
         }
         return dataList.size();
@@ -102,11 +100,13 @@ public abstract class PagedListUI<T> extends TemplateUI {
     protected abstract void addItem();
 
     private void nextPage() {
-
+        actualPage++;
     }
 
     private void previousPage() {
-
+        if (actualPage > 1) {
+            actualPage--;
+        }
     }
 
     ;
