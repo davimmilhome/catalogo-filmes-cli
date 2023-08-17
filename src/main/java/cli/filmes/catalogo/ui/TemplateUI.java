@@ -25,7 +25,9 @@ public abstract class TemplateUI {
         do {
             ConsoleUIHelper.drawHeader(title, cols);
             int linhasUsadas = 3 + drawContent() + menuLines(); // Subtraindo rows do header
-            ConsoleUIHelper.fillVSpace(rows - linhasUsadas, cols);
+            if (linhasUsadas < rows) {
+                ConsoleUIHelper.fillVSpace(rows - linhasUsadas, cols);
+            }
             ConsoleUIHelper.drawLine(cols);
             if (!drawMenu()) {
                 break;
