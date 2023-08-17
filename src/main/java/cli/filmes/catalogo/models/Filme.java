@@ -14,6 +14,18 @@ public class Filme {
 
  protected BigDecimal orcamento;
 
+    public Filme(String nomeFilme) {
+        this(
+                null,
+                nomeFilme,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+    }
+
     public Filme(TipoFilme tipoFilme, String nomeFilme, String dataLancamento, String sinopse, Diretor diretor, List<Ator> ator, BigDecimal orcamento) {
         this.tipoFilme = tipoFilme;
         this.nomeFilme = nomeFilme;
