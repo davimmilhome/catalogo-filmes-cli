@@ -124,6 +124,7 @@ public class MainTest {
                 new BigDecimal("300000000")
         );
 
+
         filmes.add(kingKong);
         filmes.add(lor1);
         filmes.add(lor2);
@@ -131,6 +132,14 @@ public class MainTest {
         filmes.add(poc1);
         filmes.add(poc2);
         filmes.add(poc3);
+
+//        Desccomentar a baixo gera um bug de paginação, procurando resolver o bug
+        
+//        for (int i = 0; i < 11; i++) {
+//            String nomeFilmeFake = "Fake" + i;
+//            Filme filmeFake = new Filme(nomeFilmeFake);
+//            filmes.add(filmeFake);
+//        }
 
         return filmes;
     }
