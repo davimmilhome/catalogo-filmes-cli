@@ -30,6 +30,11 @@ public class CatalogoUI extends PagedListUI<Filme> {
 //    }
 
 
+    @Override
+    protected void showItem(Filme item) {
+
+    }
+
     protected void addItem() {
     }
 
