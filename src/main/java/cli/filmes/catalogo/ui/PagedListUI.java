@@ -6,12 +6,12 @@ import src.main.java.cli.filmes.catalogo.ui.PagedList;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PagedListUI<T> extends TemplateUI {
+public abstract class PagedListUI<T> extends TemplateUI {
 
     protected final int PAGE_SIZE;
+    protected final PagedList<T> pageSource;
     protected int actualPage;
-
-    protected PagedList<T> pageSource;
+    private List<T> dataList;
 
     public PagedListUI(String title, PagedList<T> pageSource) {
         this(DEFAULT_ROWS, DEFAULT_COLS, title, pageSource);
@@ -27,11 +27,16 @@ public class PagedListUI<T> extends TemplateUI {
 
     @Override
     public int drawContent() {
-        List dataList = pageSource.listar(actualPage, PAGE_SIZE);
-        for (int i = 0; i < PAGE_SIZE; i++) {
-            dataList.get(i);
+        dataList = pageSource.listar(actualPage, PAGE_SIZE);
+        if (dataList.isEmpty() && actualPage > 1) {
+            previousPage();
+            dataList = pageSource.listar(actualPage, PAGE_SIZE);
         }
-        return 0;
+        for (int i = 0; i < dataList.size(); i++) {
+            String text = dataList.get(i).toString();
+            ConsoleUIHelper.drawWithRightPadding(i + " -> " + text, cols, ' ');
+        }
+        return dataList.size();
     };
     @Override
     public int menuLines() {
@@ -81,18 +86,25 @@ public class PagedListUI<T> extends TemplateUI {
     }
 
     private void seeItem() {
+        int op = ConsoleUIHelper.askNumber("Informe o item a exibir").intValue();
+        if (op >= 0 && op < dataList.size()) {
+            showItem(dataList.get(op));
+        } else {
+            ConsoleUIHelper.showMessageAndWait("Item inválido, por favor informe um item válido!", 10);
+            ConsoleUIHelper.clearScreen();
+        }
     }
 
-    private void addItem() {
-        
-    }
+    protected abstract void showItem(T item);
+
+    protected abstract void addItem();
 
     private void nextPage() {
-        
+
     }
 
     private void previousPage() {
-        
+
     }
 
     ;
