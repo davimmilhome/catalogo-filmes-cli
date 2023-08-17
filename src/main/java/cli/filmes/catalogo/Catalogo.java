@@ -31,6 +31,29 @@ public class Catalogo implements main.java.cli.filmes.catalogo.ui.PagedList<Film
         return listagem;
     }
 
+    @Override
+    public ArrayList listarNome(int pagina, int tamanhoPagina) {
+        ArrayList listagemNome = new ArrayList<>();
+
+        int primeiroRegistro = tamanhoPagina * (pagina-1);
+
+        if (primeiroRegistro > filmes.size() -1) {
+            return listagemNome;
+        }
+
+        int ultimoRegistro = primeiroRegistro + tamanhoPagina;
+        if (filmes.size() < ultimoRegistro) {
+            ultimoRegistro = filmes.size();
+        }
+
+        for (int i = primeiroRegistro; i < ultimoRegistro; i++) {
+            Filme filme = filmes.get(i);
+            String nomeFilme = filme.getNomeFilme();
+            listagemNome.add(nomeFilme);
+        }
+        return listagemNome;
+    }
+
     void adicionarFilme(Filme filme) {
         filmes.add(filme);
     }
