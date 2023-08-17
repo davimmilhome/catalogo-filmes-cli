@@ -1,4 +1,4 @@
-package src.main.java.cli.filmes.catalogo.ui;
+package main.java.cli.filmes.catalogo.ui;
 
 import java.util.List;
 
