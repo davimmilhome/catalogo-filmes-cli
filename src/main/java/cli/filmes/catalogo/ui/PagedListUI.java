@@ -1,7 +1,6 @@
 package main.java.cli.filmes.catalogo.ui;
 
 import main.java.cli.filmes.catalogo.utils.ConsoleUIHelper;
-import main.java.cli.filmes.catalogo.ui.PagedList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +10,12 @@ public abstract class PagedListUI<T> extends TemplateUI {
     protected final int PAGE_SIZE;
     protected final PagedList<T> pageSource;
     protected int actualPage;
+
     private List<T> dataList;
+    private ArrayList nomesFilme;
 
     public PagedListUI(String title, PagedList<T> pageSource) {
         this(DEFAULT_ROWS, DEFAULT_COLS, title, pageSource);
-        // **
     }
 
     public PagedListUI(int linhas, int colunas, String title, PagedList<T> pageSource) {
@@ -28,16 +28,18 @@ public abstract class PagedListUI<T> extends TemplateUI {
     @Override
     public int drawContent() {
         dataList = pageSource.listar(actualPage, PAGE_SIZE);
-        if (dataList.isEmpty() && actualPage > 1) {
+        nomesFilme = (ArrayList) pageSource.listarNome(actualPage, PAGE_SIZE);
+        if (nomesFilme.isEmpty() && actualPage > 1) {
             previousPage();
-            dataList = pageSource.listar(actualPage, PAGE_SIZE);
+            nomesFilme = (ArrayList) pageSource.listarNome(actualPage, PAGE_SIZE);
         }
-        for (int i = 0; i < dataList.size(); i++) {
-            String text = dataList.get(i).toString();
+        for (int i = 0; i < nomesFilme.size(); i++) {
+            String text = nomesFilme.get(i).toString();
             ConsoleUIHelper.drawWithRightPadding(i + " -> " + text, cols, ' ');
         }
         return dataList.size();
     };
+
     @Override
     public int menuLines() {
         return 6; // 5 opções e a menssagem
