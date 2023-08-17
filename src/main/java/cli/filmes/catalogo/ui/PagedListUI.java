@@ -1,7 +1,7 @@
 package main.java.cli.filmes.catalogo.ui;
 
 import main.java.cli.filmes.catalogo.utils.ConsoleUIHelper;
-import src.main.java.cli.filmes.catalogo.ui.PagedList;
+import main.java.cli.filmes.catalogo.ui.PagedList;
 
 import java.util.ArrayList;
 import java.util.List;
