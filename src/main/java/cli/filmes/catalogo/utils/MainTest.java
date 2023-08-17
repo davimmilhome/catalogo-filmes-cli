@@ -15,7 +15,10 @@ public class MainTest {
         dataLoader();
     }
 
-    public static void dataLoader() {
+    public static ArrayList<Filme> dataLoader() {
+
+        ArrayList filmes = new ArrayList<>();
+
         Diretor peterJackson = new Diretor(
                 "Peter",
                 "Jackson",
@@ -121,13 +124,15 @@ public class MainTest {
                 new BigDecimal("300000000")
         );
 
-        System.out.println(kingKong.toString());
-        System.out.println(lor1.toString());
-        System.out.println(lor2.toString());
-        System.out.println(lor3.toString());
-        System.out.println(poc1.toString());
-        System.out.println(poc2.toString());
-        System.out.println(poc3.toString());
+        filmes.add(kingKong);
+        filmes.add(lor1);
+        filmes.add(lor2);
+        filmes.add(lor3);
+        filmes.add(poc1);
+        filmes.add(poc2);
+        filmes.add(poc3);
+
+        return filmes;
     }
 
 
