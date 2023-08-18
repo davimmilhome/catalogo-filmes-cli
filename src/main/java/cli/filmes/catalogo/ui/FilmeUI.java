@@ -52,10 +52,14 @@ public class FilmeUI extends EditItemUI<Filme> {
                 String sinopse = ConsoleUIHelper.askSimpleInput("Informe a sinopse: ");
                 item.setSinopse(sinopse);
                 break;
-//            case 4:
-//                Diretor diretor = ConsoleUIHelper.askSimpleInput("Informe o diretor: ");
-//                item.setDiretor(diretor);
-//                break;
+            case 4:
+                String nomeDiretor = ConsoleUIHelper.askSimpleInput("Informe o primeiro nome diretor: ");
+                String sobrenomeDiretor = ConsoleUIHelper.askSimpleInput("Informe o sobrenome diretor: ");
+                String nacionalidade = ConsoleUIHelper.askSimpleInput("Informe a nacionalidade diretor: ");
+                LocalDate dob = LocalDate.parse(ConsoleUIHelper.askSimpleInput("Informe a data de aniversario do diretor: "));
+                Diretor diretor = new Diretor(nomeDiretor, sobrenomeDiretor, dob, nacionalidade);
+                item.setDiretor(diretor);
+                break;
 //            case 5:
 //                String ator = ConsoleUIHelper.askSimpleInput("Adicione um ator: ");
 //                item.setAtor(ator);

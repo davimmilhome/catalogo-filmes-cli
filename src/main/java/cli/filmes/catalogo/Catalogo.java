@@ -49,4 +49,13 @@ public class Catalogo implements main.java.cli.filmes.catalogo.ui.PagedList<Film
         return encontrados;
     }
 
+    boolean isNewDiretor(String nomeCompleto) {
+        for (Filme filme : filmes) {
+            if (filme.getNomeCompletoDiretor().equals(nomeCompleto)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

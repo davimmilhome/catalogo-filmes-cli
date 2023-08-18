@@ -72,6 +72,10 @@ public class Filme {
         return diretor;
     }
 
+    public String getNomeCompletoDiretor() {
+        return diretor.getNomeCompleto();
+    }
+
     public void setDiretor(Diretor diretor) {
         this.diretor = diretor;
     }
