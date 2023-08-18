@@ -14,6 +14,18 @@ public class Filme {
 
  protected BigDecimal orcamento;
 
+    public Filme(String nomeFilme) {
+        this(
+                null,
+                nomeFilme,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+    }
+
     public Filme(TipoFilme tipoFilme, String nomeFilme, String dataLancamento, String sinopse, Diretor diretor, List<Ator> ator, BigDecimal orcamento) {
         this.tipoFilme = tipoFilme;
         this.nomeFilme = nomeFilme;
@@ -82,14 +94,6 @@ public class Filme {
 
     @Override
     public String toString() {
-        return "Filme{" +
-                "tipoFilme=" + tipoFilme +
-                ", nomeFilme='" + nomeFilme + '\'' +
-                ", dataLancamento='" + dataLancamento + '\'' +
-                ", sinopse='" + sinopse + '\'' +
-                ", diretor=" + diretor +
-                ", ator=" + ator +
-                ", orcamento=" + orcamento +
-                '}';
+        return  nomeFilme;
     }
 }
