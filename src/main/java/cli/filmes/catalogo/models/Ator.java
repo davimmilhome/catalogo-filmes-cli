@@ -13,12 +13,7 @@ public class Ator extends Pessoa{
 
     @Override
     public String toString() {
-        return "Ator{" +
-                "nome='" + nome + '\'' +
-                ", sobrenome='" + sobrenome + '\'' +
-                ", dob=" + dob +
-                ", idade=" + getIdade() +
-                ", nacionalidade='" + nacionalidade + '\'' +
-                '}';
+        return  nome + " " + sobrenome;
+
     }
 }
