@@ -1,20 +1,12 @@
 # catalogo-filmes-cli
 
+Um software CLI de catálogo de filmes. Projeto desenvolvido com fins estudantis.
 
 <br/>
-
-## Como usar
-
-
-<br/> 
 
 ## Tecnologias utilizadas
 
-
-<br/>
-
-## Contribuindo
-
+Java 17
 
 <br/>
 
@@ -24,9 +16,3 @@ Antônio Marcos </br>
 Bruno Aguiar </br>
 Davi Martins Milhome </br>
 Fabiana Ikeda
-
-
-
-
-
-
