@@ -11,8 +11,17 @@ public class Filme {
  protected String sinopse;
  protected Diretor diretor;
  protected List<Ator> ator;
+ protected boolean novo;
 
- protected BigDecimal orcamento;
+    public boolean isNovo() {
+        return novo;
+    }
+
+    public void setNovo(boolean novo) {
+        this.novo = novo;
+    }
+
+    protected BigDecimal orcamento;
 
     public Filme(String nomeFilme) {
         this(
@@ -34,6 +43,7 @@ public class Filme {
         this.diretor = diretor;
         this.ator = ator;
         this.orcamento = orcamento;
+        this.novo = true;
     }
 
     public TipoFilme getTipoFilme() {

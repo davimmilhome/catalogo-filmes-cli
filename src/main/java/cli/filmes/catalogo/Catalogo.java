@@ -32,6 +32,7 @@ public class Catalogo implements main.java.cli.filmes.catalogo.ui.PagedList<Film
     }
 
     void adicionarFilme(Filme filme) {
+        filme.setNovo(false);
         filmes.add(filme);
     }
 
@@ -48,5 +49,7 @@ public class Catalogo implements main.java.cli.filmes.catalogo.ui.PagedList<Film
         }
         return encontrados;
     }
+
+
 
 }
