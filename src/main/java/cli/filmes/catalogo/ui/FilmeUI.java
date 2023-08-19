@@ -3,17 +3,20 @@ package main.java.cli.filmes.catalogo.ui;
 
 import main.java.cli.filmes.catalogo.enums.TipoFilme;
 import main.java.cli.filmes.catalogo.models.Ator;
-import main.java.cli.filmes.catalogo.models.Diretor;
 import main.java.cli.filmes.catalogo.models.Filme;
 import main.java.cli.filmes.catalogo.utils.ConsoleUIHelper;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class FilmeUI extends EditItemUI<Filme> {
 
     public FilmeUI(String title, Filme item, EditItemCallback<Filme> editItemCallback) {
         super(title, item, editItemCallback);
+
     }
 
     @Override
@@ -60,10 +63,20 @@ public class FilmeUI extends EditItemUI<Filme> {
                 Diretor diretor = new Diretor(nomeDiretor, sobrenomeDiretor, dob, nacionalidade);
                 item.setDiretor(diretor);
                 break;
-//            case 5:
-//                String ator = ConsoleUIHelper.askSimpleInput("Adicione um ator: ");
-//                item.setAtor(ator);
-//                break;
+            case 5:
+                String nomeAtor = ConsoleUIHelper.askSimpleInput("Informe o nome do ator: ");
+                String sobrenomeAtor = ConsoleUIHelper.askSimpleInput("Informe o sobrenome do ator: ");
+                LocalDate dob = LocalDate.parse(ConsoleUIHelper.askSimpleInput("Informe a data de nascimento: "));
+                String nacionalidade = ConsoleUIHelper.askSimpleInput("Informe a nacionalidade: ");
+                Ator ator = new Ator(nomeAtor, sobrenomeAtor, dob, nacionalidade);
+                if (item.getAtor() == null) {
+                    List<Ator> atores = new ArrayList<>();
+                    atores.add(ator);
+                    item.setAtor(atores);
+                } else {
+                    item.getAtor().add(ator);
+                }
+                break;
             case 6:
                 String orcamento = ConsoleUIHelper.askSimpleInput("Informe o Orçamento: ");
                 item.setOrcamento(new BigDecimal(orcamento));
