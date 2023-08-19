@@ -58,6 +58,10 @@ public abstract class Pessoa {
         pessoa.setDob(dob);
     }
 
+    public String getNomeCompleto(){
+        return (this.getNome() + " " + this.getSobrenome());
+    }
+
     @Override
     public String toString() {
         return "Pessoa{" +
